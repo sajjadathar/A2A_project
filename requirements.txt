@@ -3,3 +3,6 @@ langchain
 langchain_google_genai
 langchain_core
 python_dotenv
+uvicorn
+starlette
+sse-starlette

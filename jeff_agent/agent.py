@@ -2,6 +2,7 @@ from email import message
 from logging import config
 from subprocess import check_output
 from urllib import response
+
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import MemorySaver
 from langchain_core.messages.ai import AIMessage
@@ -11,16 +12,20 @@ from tools import get_availability
 
 from dotenv import load_dotenv
 
+import asyncio
+
 # Step1: Agent & tool
-# step2: Agent ecxecutor
-# step3: Agent card
-# step4: hosta the Agent
+
+
 
 load_dotenv()
 
 memory = MemorySaver()
 
-class JeffaGENT():
+class JeffAgent():
+
+    SUPPORTED_CONTENT_TYPES = ["text", "text/plain"]
+
     def __init__(self):
         self.model = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
         self.tools = [get_availability]
@@ -44,3 +49,7 @@ class JeffaGENT():
         ai_messages = [message.content for message in messages if isinstance(message, AIMessage)]
         response = ai_messages[-1] if ai_messages else "No response"
         return response
+    
+# agent = JeffAgent()
+# response = asyncio.run(agent.get_response(query="Is Jeff available on 8th of November 2025?", context_id=1234))
+# print(response)
