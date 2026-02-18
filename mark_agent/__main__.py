@@ -42,7 +42,7 @@ def main(host="localhost", port=10005):
     # httpx_client = httpx.AsyncClient()
 
     request_handler =DefaultRequestHandler(
-        agent_executor=MarkAgentExecutor,
+        agent_executor=MarkAgentExecutor(),
         task_store=InMemoryTaskStore(),
         # push_notifier=InMemoryPushNotifier(httpx_client),
     )

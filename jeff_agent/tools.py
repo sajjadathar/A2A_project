@@ -1,10 +1,10 @@
 # 🗓️ Pretend this is Jeff's Calendar
 FAKE_AVAILABILITY = {
-    "2025-11-09": "Available from 4:00 PM to 6:00 PM",
-    "2025-11-10": "Available from 10:00 AM to 12:00 PM",
-    "2025-11-11": "Available from 11:00 AM to 12:00 PM",
-    "2025-11-12": "Busy all afternoon (1:00 PM – 5:00 PM)",
-    "2025-11-13": "Available all day",
+    "2026-11-09": "Available from 4:00 PM to 6:00 PM",
+    "2026-11-10": "Available from 10:00 AM to 12:00 PM",
+    "2026-11-11": "Available from 11:00 AM to 12:00 PM",
+    "2026-11-12": "Busy all afternoon (1:00 PM – 5:00 PM)",
+    "2026-11-13": "Available all day",
 }
 
 def get_availability(date_str: str) -> dict[str, str]:

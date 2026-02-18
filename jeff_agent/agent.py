@@ -41,15 +41,25 @@ class JeffAgent():
             system_prompt=self.system_prompt,
             checkpointer=memory
         )
+    
     async def get_response(self, query, context_id):
         inputs = {"messages": [("user", query)]}
         config = {"configurable": {"thread_id": context_id}}
         raw_response = self.graph.invoke(inputs, config)
         messages = raw_response.get("messages", [])
         ai_messages = [message.content for message in messages if isinstance(message, AIMessage)]
-        response = ai_messages[-1] if ai_messages else "No response"
-        return response
+        
+        if not ai_messages:
+            return {"content": "No response"}
+        
+        # Handle both string content and list of content parts
+        content = ai_messages[-1]
+        if isinstance(content, list):
+            # Extract text from content parts
+            text_parts = [part.get("text", "") if isinstance(part, dict) else str(part) for part in content]
+            response = " ".join(text_parts)
+        else:
+            response = str(content)
+        
+        return {"content": response}
     
-# agent = JeffAgent()
-# response = asyncio.run(agent.get_response(query="Is Jeff available on 8th of November 2025?", context_id=1234))
-# print(response)

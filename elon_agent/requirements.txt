@@ -1,0 +1,6 @@
+
+python_dotenv
+google-adk
+a2a_sdk
+httpx
+nest_asyncio

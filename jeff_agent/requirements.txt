@@ -1,12 +1,9 @@
-langgraph
 langchain
 langchain_google_genai
-langchain_core
 python_dotenv
 uvicorn
 starlette
 sse-starlette
-crewai
-nest_asyncio
 google-adk
 google-generativeai
+a2a_sdk

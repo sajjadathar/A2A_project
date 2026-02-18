@@ -1,0 +1,7 @@
+python_dotenv
+uvicorn
+starlette
+sse-starlette
+a2a_sdk
+crewai
+crewai[google-genai]

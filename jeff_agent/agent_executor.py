@@ -6,16 +6,29 @@ from a2a.server.events.event_queue import EventQueue
 
 from agent import JeffAgent
 
+from a2a.server.tasks import TaskUpdater
+from a2a.types import Part, TextPart
+
 class JeffAgentExecutor(AgentExecutor):
-    def __ini__(self):
+    def __init__(self):
         self.agent = JeffAgent()
     
 
     async def execute(self, context:RequestContext, event_queue:EventQueue):
+
+        updater = TaskUpdater(event_queue, context.task_id, context.context_id)
+        if not context.current_task:
+            await updater.submit()
+        await updater.start_work()
+
         query = context.get_user_input()
         context_id = context.context_id
-        response = self.agent.get_response(query=query, context_id=context_id)
-        return response["content"]
+
+        response = await self.agent.get_response(query=query, context_id=context_id)
+        
+        parts = [Part(root=TextPart(text=response["content"]))]
+        await updater.add_artifact(parts, name="scheduling_result")
+        await updater.complete()
 
     async def cancel(self, context:RequestContext, event_queue:EventQueue):
         return

@@ -3,11 +3,11 @@ from crewai.tools import BaseTool
 
 
 FAKE_AVAILABILITY = {
-    "2025-11-09": "Busy all day",
-    "2025-11-10": "Available from 11:00 AM to 03:00 PM",
-    "2025-11-11": "Available from 11:00 AM to 03:00 PM",
-    "2025-11-13": "Available all day",
-    "2025-11-14": "Busy all day",
+    "2026-11-09": "Busy all day",
+    "2026-11-10": "Available from 11:00 AM to 03:00 PM",
+    "2026-11-11": "Available from 11:00 AM to 03:00 PM",
+    "2026-11-13": "Available all day",
+    "2026-11-14": "Busy all day",
 }
 
 def get_availability(date_str: str) -> dict[str, str]:
