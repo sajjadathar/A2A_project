@@ -63,9 +63,6 @@ This mimics how human assistants would coordinate - each agent has its own infor
 
 ### 1. Clone and Navigate to Project
 
-```bash
-cd /Users/hassan.mahmood/Documents/hassan-docs/ai-projects-with-hassan/a2a-project
-```
 
 ### 2. Configure Environment Variables
 
